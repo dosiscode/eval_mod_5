@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean:beans
+	xmlns:bean="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+	
+	<http use-expressions="true">
+		<intercept-url pattern="/" access="permitAll"/>
+		<intercept-url pattern="/menuAdmin" access="permitAll"/>
+		<intercept-url pattern="/mantenedor/cliente" access="permitAll"/>
+		<intercept-url pattern="/nuevoCliente" access="permitAll"/>
+		<intercept-url pattern="/agregarCliente" access="permitAll"/>
+		<intercept-url pattern="/editarCliente/{id}" access="permitAll"/>
+		<intercept-url pattern="/eliminarCliente/{id}" access="permitAll"/>
+		<intercept-url pattern="/mantenedor/profesional" access="permitAll"/>
+		<intercept-url pattern="/nuevoProfesional" access="permitAll"/>
+		<intercept-url pattern="/agregarProfesional" access="permitAll"/>
+		<intercept-url pattern="/editarProfesional/{id}" access="permitAll"/>
+		<intercept-url pattern="/editarProf" access="permitAll"/>
+		<intercept-url pattern="/eliminarProf/{id}" access="permitAll"/>
+		<intercept-url pattern="/inicio" access="permitAll"/>
+		
+		<form-login />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder hash="bcrypt"/>
+			<user-service>
+				<user name="admin" password="$2a$10$N21wiEJYWsWXKkkNnLdVFeCHVbzx8XpuA7zpicl3dh61BOKr45tda" authorities="ADMIN" />
+				<user name="prof" password="$2a$10$N21wiEJYWsWXKkkNnLdVFeCHVbzx8XpuA7zpicl3dh61BOKr45tda" authorities="PROF" />
+				<user name="cli" password="$2a$10$N21wiEJYWsWXKkkNnLdVFeCHVbzx8XpuA7zpicl3dh61BOKr45tda" authorities="CLI" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</bean:beans>
